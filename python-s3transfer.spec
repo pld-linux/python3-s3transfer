@@ -8,7 +8,7 @@ Summary:	Amazon S3 Transfer Manager
 Summary(pl.UTF-8):	Zarządca transferu danych Amazon S3
 Name:		python-s3transfer
 Version:	0.3.4
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/s3transfer/
