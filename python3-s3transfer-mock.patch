@@ -2,7 +2,7 @@
 +++ s3transfer-0.3.4/tests/functional/test_manager.py	2021-02-14 10:53:55.517004397 +0100
 @@ -12,7 +12,10 @@
  # language governing permissions and limitations under the License.
- from io import RawIOBase
+ from io import BytesIO
  from botocore.awsrequest import create_request_object
 -import mock
 +try:
