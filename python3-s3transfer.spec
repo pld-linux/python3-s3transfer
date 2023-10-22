@@ -1,28 +1,29 @@
 #
 # Conditional build:
-%bcond_without	tests	# unit tests
+%bcond_without	tests	# unit/functional tests
 
 Summary:	Amazon S3 Transfer Manager
 Summary(pl.UTF-8):	Zarządca transferu danych Amazon S3
 Name:		python3-s3transfer
-Version:	0.6.0
+Version:	0.7.0
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/s3transfer/
 Source0:	https://files.pythonhosted.org/packages/source/s/s3transfer/s3transfer-%{version}.tar.gz
-# Source0-md5:	17b8acaa7aeb376606637de9e3b3ec1b
+# Source0-md5:	8b3838135fb1a31ffb9efc725967382f
 URL:		https://pypi.org/project/s3transfer/
-BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	python3-setuptools
 %if %{with tests}
 BuildRequires:	python3-botocore >= 1.12.36
+BuildRequires:	python3-botocore < 2
 BuildRequires:	python3-nose >= 1.3.3
 BuildRequires:	python3-six
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-Requires:	python3-modules >= 1:3.6
+Requires:	python3-modules >= 1:3.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
