@@ -13,17 +13,16 @@ Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/s/s3transfer/s3transfer-%{version}.tar.gz
 # Source0-md5:	891737ce35aeb23b02a47a72c7f9b639
 URL:		https://pypi.org/project/s3transfer/
-BuildRequires:	python3-modules >= 1:3.7
+BuildRequires:	python3-modules >= 1:3.8
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-botocore >= 1.12.36
+BuildRequires:	python3-botocore >= 1.33.2
 BuildRequires:	python3-botocore < 2
-BuildRequires:	python3-nose >= 1.3.3
-BuildRequires:	python3-six
+BuildRequires:	python3-pytest
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-Requires:	python3-modules >= 1:3.7
+Requires:	python3-modules >= 1:3.8
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,7 +40,8 @@ Amazon S3.
 %py3_build
 
 %if %{with tests}
-%{__python3} -m unittest discover -s tests/unit
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+%{__python3} -m pytest tests/unit
 %endif
 
 %install
